@@ -21,7 +21,23 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-require_relative('romg/version.rb')
-require_relative('romg/class_space.rb')
-require_relative('romg/class_graph.rb')
-require_relative('romg/class_graph/output/graphviz.rb')
+module ROMG
+  module ClassGraph
+    module Output
+      class GraphViz
+        attr_reader :graphviz
+
+        def initialize(graphviz)
+          @graphviz = graphviz
+        end
+
+        def output(filename, graphviz_format, graphviz_program)
+          graphviz.output(
+            graphviz_format => File.basename(filename),
+            :path => File.dirname(filename),
+            :use => graphviz_program)
+        end
+      end
+    end
+  end
+end

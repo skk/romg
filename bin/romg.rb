@@ -1,5 +1,5 @@
+#!/usr/bin/env ruby
 # encoding: utf-8
-
 # Copyright (c) 2013 Steven K. Knight
 
 # Permission is hereby granted, free of charge, to any person obtaining
@@ -21,7 +21,9 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-require_relative('romg/version.rb')
-require_relative('romg/class_space.rb')
-require_relative('romg/class_graph.rb')
-require_relative('romg/class_graph/output/graphviz.rb')
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), "/../lib/"))
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__)))
+
+require 'romg/cli'
+ROMG::CLI.execute
+

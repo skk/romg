@@ -1,5 +1,7 @@
 # encoding: utf-8
 
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), "lib"))
+
 require 'rubygems'
 require 'bundler'
 begin
@@ -11,6 +13,9 @@ rescue Bundler::BundlerError => e
 end
 require 'rake'
 
+require 'romg/version'
+version = ROMG::Version::VERSION
+
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
@@ -21,6 +26,9 @@ Jeweler::Tasks.new do |gem|
   gem.description = %Q{Generate Diagrams of the Ruby Object Model}
   gem.email = "steven@knight.cx"
   gem.authors = ["Steven Knight"]
+  gem.version = version
+  gem.executables   = ["romg"]
+  gem.require_paths = ["lib"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
@@ -40,8 +48,6 @@ task :default => :spec
 
 require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ""
-
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title = "romg #{version}"
   rdoc.rdoc_files.include('README*')

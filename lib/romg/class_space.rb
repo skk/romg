@@ -21,7 +21,28 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-require_relative('romg/version.rb')
-require_relative('romg/class_space.rb')
-require_relative('romg/class_graph.rb')
-require_relative('romg/class_graph/output/graphviz.rb')
+module ROMG
+  
+  class ClassSpace
+    include Enumerable
+
+    attr_reader :class_list
+
+    def initialize()
+        @class_list = ObjectSpace.each_object(Class).to_a
+    end
+
+    # should this really by mutating @class_list ?
+    def filter(valid_class_list)
+      @class_list = @class_list.find_all do |c| 
+        #puts "c #{c}\n in valid_class_list #{valid_class_list.include?(c)}\n"
+        valid_class_list.include?(c)
+      end
+    end
+
+    def each()
+      @class_list.each { |c| yield c }
+    end
+
+  end
+end

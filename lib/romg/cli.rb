@@ -22,26 +22,26 @@
 
 require 'mixlib/cli'
 
-require 'romg/version' 
-require 'romg/class_space' 
-require 'romg/class_graph' 
-require 'romg/class_graph/output/graphviz' 
+require 'romg/version'
+require 'romg/class_space'
+require 'romg/class_graph'
+require 'romg/class_graph/output/graphviz'
 require 'config'
 
 module ROMG
   class CommandParser
     include Mixlib::CLI
 
-    option :config_file, 
+    option :config_file,
       short: "-c CONFIG",
       long: "--config CONFIG",
       default: 'config.rb',
       description: "The configuration file to use"
 
-    option :log_level, 
+    option :log_level,
       short: "-l LEVEL",
       long: "--log_level LEVEL",
-      description: 
+      description:
         "Set the log level: debug, info, warn, error, fatal (default)" ,
       required: false,
       default: :fatal,

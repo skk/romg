@@ -1,4 +1,4 @@
-= romg
+= romg (Ruby Object Model Grapher)
 
 Description goes here.
 

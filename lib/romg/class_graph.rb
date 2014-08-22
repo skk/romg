@@ -33,7 +33,7 @@ module ROMG
 
       def initialize(class_list)
         @class_list = class_list
-        @graphviz = ::GraphViz.new("ROMG")
+        @graphviz = ::GraphViz.new('ROMG')
         @edges_cache = {}
       end
 
